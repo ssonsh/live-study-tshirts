@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>live study</title>
+</head>
+<body>
+<h1>배송정보 입력</h1>
+<form th:object="${dropship}" method="post" th:action="@{/form}">
+    <div>
+        <label for="name">이름</label>
+        <input id="name" th:type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label for="address">주소</label>
+        <input id="address" th:type="text" th:field="*{address}">
+    </div>
+    <div>
+        <label for="zipCode">우편번호</label>
+        <input id="zipCode" th:type="text" th:field="*{zipCode}">
+    </div>
+    <div>
+        <label for="contactNumber">연락처</label>
+        <input id="contactNumber" th:type="text" th:field="*{contactNumber}">
+    </div>
+    <div>
+        <label for="memo">메모</label>
+        <input id="memo" th:type="text" th:field="*{memo}">
+    </div>
+    <div>
+        <label for="size">티셔츠 사이즈</label>
+        <select id="size" th:field="*{size}">
+            <option th:each="sizeOption : ${T(com.ssonsh.domain.Size).values()}"
+                    th:value="${sizeOption}"
+                    th:text="${sizeOption.getText()}"/>
+        </select>
+    </div>
+    <div>
+        <input type="submit" title="입력"/>
+    </div>
+
+</form>
+</body>
+</html>
